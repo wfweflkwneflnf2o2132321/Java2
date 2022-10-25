@@ -1,19 +1,12 @@
 package Dz4;
 
-
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Scanner;
-import java.util.TreeMap;
-import java.io.FileReader;
+import java.util.*;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
 public class HomeWork4 {
-
 
 
     public static void main(String[] args) throws IOException {
@@ -42,71 +35,52 @@ public class HomeWork4 {
         });
 
 
-        File file = new File("Урок 6. Collections Framework (скачан) (1).txt");
-        Parser parser = new Parser();
-        ArrayList<String> lines = parser.parse(file);
-        for (String line : lines) {
-            System.out.println(line);
-        }
+//        File file = new File("Урок 6. Collections Framework (скачан) (1).txt");
+//        Parser parser = new Parser();
+//        ArrayList<String> lines = parser.parse(file);
+//        for (String line : lines) {
+//            System.out.println(line);
+//        }
 
 
-        File f1 = new File("Урок 6. Collections Framework (скачан) (1).txt"); //Создание файлового дескриптора для входного файла
-        String[] words = new String[0];  //Инициализируйте массив слов
-        FileReader fileReader = new FileReader(f1);  //Создание объекта для чтения файлов
-        BufferedReader bufferedReader = new BufferedReader(fileReader); //Создание объекта BufferedReader
-        String s;
         int count = 0;   //Инициализируйте слово нуль
-        while ((s = bufferedReader.readLine()) != null)   //Считывание содержимого из файла
-            words = s.split( " ");  //Разделите слово пробелом
-        for (String word : words)
-        {
-            Pattern input = Pattern.compile("[Сс]трад.*");
-            Matcher mc=input.matcher(word);
-            while (mc.find())// поиск заданного слова
-                count++; //если присутствует увеличиваем на один
-            System.out.println(word);
-
+        Pattern pattern = Pattern.compile("[Сс]трад.*");
+        File file1 = new File("Урок 6. Collections Framework (скачан) (1).txt"); //Создание файлового дескриптора для входного файла
+        Parser parser1 = new Parser();
+        ArrayList<String> lines = parser1.parse(file1);
+        for (String line : lines) {
+            args = line.split(" ");  //Разделите слово пробелом
+            Matcher mc = pattern.matcher(Arrays.toString(args));
+            while (mc.find()) {// поиск заданного слова
+                count++;//если присутствует увеличиваем на один
+            }
         }
-
         if (count != 0)  //Проверьте, не равно ли количество нулю
         {
             System.out.println("Данное слово присутствует в файле в течение " + count + " раз");
         } else {
             System.out.println("Данное слово отсутствует в файле");
         }
-        fileReader.close();
 
 
-
-
-
-
-
-
-
-
-
-//        Scanner file2 =new Scanner("Урок 6. Collections Framework (скачан).txt"); //Создание файлового дескриптора для входного файла
-//        String[] word=null;  //Инициализируйте массив слов
-//        FileReader frr = new FileReader(file);  //Создание объекта для чтения файлов
-//        BufferedReader brr = new BufferedReader(frr); //Создание объекта BufferedReader
-//        String d;
-//        String inputs="страдание";   // Вводимое слово для поиска
-//        int counts=0;   //Инициализируйте слово нуль
-//        while((d=brr.readLine())!=null)   //Считывание содержимого из файла
-//        {
-//            word=d.split(" ");  //Разделите слово пробелом
-//        }
-//        if(count!=0)  //Проверьте, не равно ли количество нулю
-//        {
-//            System.out.println("Данное слово присутствует в файле в течение "+counts+" раз");
-//        }
-//        else
-//        {
-//            System.out.println("Данное слово отсутствует в файле");
-//        }
-//
-//        frr.close();
+        int countt = 0;   //Инициализируйте слово нуль
+        Pattern pattern1 = Pattern.compile("[Сс]трад.*");
+        Scanner scanner = new Scanner("Урок 6. Collections Framework (скачан) (1).txt"); //Создание файлового дескриптора для входного файла
+        Parser parser2 = new Parser();
+        ArrayList<String> liness = parser1.parse(file1);
+        for (String line : liness) {
+            args = line.split(" ");  //Разделите слово пробелом
+            Matcher mc = pattern.matcher(Arrays.toString(args));
+            while (mc.find()) {// поиск заданного слова
+                countt++;//если присутствует увеличиваем на один
+            }
+        }
+        if (countt != 0)  //Проверьте, не равно ли количество нулю
+        {
+            System.out.println("Данное слово присутствует в файле в течение " + countt + " раз");
+        } else {
+            System.out.println("Данное слово отсутствует в файле");
+        }
 
 
         int[] pif = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
